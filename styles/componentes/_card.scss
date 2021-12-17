@@ -1,0 +1,21 @@
+.cards{
+    @include displayflex();
+}
+
+.card{
+    @include card();
+    @include displayflex($direction:column, $content: space-around);
+    background-color: white;
+}
+
+.container-img{
+    @include containerCard();
+}
+
+#img-personaje{
+    @include imagen-card();
+}
+
+.info-personaje{
+    @include displayflex($direction:column, $content: space-around);
+}

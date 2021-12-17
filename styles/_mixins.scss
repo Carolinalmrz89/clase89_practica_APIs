@@ -1,0 +1,27 @@
+@mixin displayflex ($direction: row, $content: center, $align: center){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+    flex-wrap: wrap;
+}
+
+@mixin card (){
+    width: 200px;
+    height: 280px;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    color: $color-principal;
+    font-family: $tipografia-principal;
+}
+
+
+@mixin containerCard (){
+    width: 180px;
+}
+
+@mixin imagen-card(){
+    width: 100%
+}
