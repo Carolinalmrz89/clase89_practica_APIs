@@ -17,7 +17,7 @@ const crearTarjeta = (data) =>{
     const mostrarEnHtml = data.reduce((acc, curr) =>{
 
         return acc + 
-        `<div class="card">
+        `<div class="card" data-id="${curr.id}">
             <div class="container-img">
                 <img id="img-personaje" src="${curr.image}" alt="">
             </div>
@@ -30,6 +30,7 @@ const crearTarjeta = (data) =>{
     }, "");
 
     containerCards.innerHTML = mostrarEnHtml
+    asignarClicksACards();
 };
 
 pedirInfo();
@@ -49,3 +50,25 @@ formBuscador.onsubmit = (e) =>{
     e.preventDefault();
     buscarPersonajes(inputBuscador.value)
 }
+
+const mostrarInfoPersonajes = (id) =>{
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    .then((res) => res.json())
+    .then((data) =>{
+       console.log(data)
+    })
+}
+
+const asignarClicksACards = () =>{
+    const cards = document.querySelectorAll(".card");
+    
+    for (let i = 0; i< cards.length; i++) {
+        
+        cards[i].onclick = () =>{
+            const idPersonajes = cards[i].dataset.id;
+            mostrarInfoPersonajes(idPersonajes);
+            console.log(idPersonajes)
+        }
+    }
+} 
+
